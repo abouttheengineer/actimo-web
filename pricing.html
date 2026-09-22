@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>料金プラン | Actimo</title>
+  <meta name="description" content="Actimoの料金プラン。1アカウント550円（税抜）から始められます。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1B4FE8;
+      --blue-dark:   #1040CC;
+      --teal:        #10D5AB;
+      --dark:        #07101F;
+      --navy:        #0C1E3D;
+      --text:        #1A2B4A;
+      --muted:       #5C7099;
+      --bg:          #F4F7FF;
+      --white:       #FFFFFF;
+      --border:      #DCE4F5;
+      --radius:      12px;
+      --font:        'Noto Sans JP', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { height: 28px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 700; font-size: 15px;
+      padding: 12px 28px; border-radius: 999px; border: none; cursor: pointer;
+      transition: all .2s; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(27,79,232,.30); }
+    .btn-outline  { background: transparent; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: var(--white); }
+    .btn-sm       { font-size: 13px; padding: 10px 22px; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 72px 0 56px;
+      background: linear-gradient(135deg, #F4F7FF 0%, #E6ECFC 100%);
+      text-align: center;
+    }
+    .page-header-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      background: rgba(27,79,232,.10); padding: 6px 14px;
+      border-radius: 999px; margin-bottom: 20px; letter-spacing: .04em;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      color: var(--dark); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .page-header p {
+      font-size: 16px; color: var(--muted); line-height: 1.8;
+    }
+
+    /* ── Pricing ── */
+    .pricing-section { padding: 80px 0; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .pricing-card {
+      border: 2px solid var(--border); border-radius: 20px;
+      padding: 44px 40px; position: relative; overflow: hidden;
+      background: var(--white);
+    }
+    .pricing-card.featured {
+      border-color: var(--blue);
+      background: linear-gradient(160deg, #F0F5FF 0%, #E8EFFF 100%);
+    }
+    .pricing-card.featured::before {
+      content: 'おすすめ';
+      position: absolute; top: 20px; right: 20px;
+      font-size: 11px; font-weight: 700; color: var(--white);
+      background: var(--blue); padding: 4px 12px; border-radius: 999px;
+      letter-spacing: .04em;
+    }
+    .plan-name { font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .plan-price {
+      display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px;
+    }
+    .plan-price-num { font-size: 52px; font-weight: 900; color: var(--dark); line-height: 1; }
+    .plan-price-unit { font-size: 16px; font-weight: 700; color: var(--muted); }
+    .plan-price-tax { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .plan-divider { height: 1px; background: var(--border); margin: 24px 0; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text); line-height: 1.6;
+    }
+    .plan-features li::before {
+      content: '✓'; font-weight: 700; color: var(--teal);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .plan-note { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.7; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 80px 0; background: var(--bg); }
+    .section-title {
+      font-size: clamp(24px, 3vw, 36px); font-weight: 900;
+      color: var(--dark); line-height: 1.25; letter-spacing: -.02em; margin-bottom: 48px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+    .faq-q { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .faq-q::before { content: 'Q. '; color: var(--blue); }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.85; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue) 0%, #0F3CC7 100%);
+      text-align: center; padding: 80px 0;
+    }
+    .cta-sub   { font-size: 16px; color: rgba(255,255,255,.7); margin-bottom: 36px; line-height: 1.75; }
+    .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn-white    { background: var(--white); color: var(--navy); }
+    .btn-white:hover { background: var(--bg); }
+    .btn-ghost    { background: transparent; color: rgba(255,255,255,.8); border: 2px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.7); color: var(--white); }
+
+    /* ── Footer ── */
+    footer { background: var(--dark); padding: 40px 0; }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { height: 22px; width: auto; filter: brightness(0) invert(1); opacity: .6; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.35); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html"><img src="Actimo_logo.png" alt="Actimo" class="nav-logo" /></a>
+        <ul class="nav-links">
+          <li><a href="index.html#features">特徴</a></li>
+          <li><a href="index.html#how">使い方</a></li>
+          <li><a href="pricing.html">料金</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn-primary btn-sm">無料で始める</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-kicker">Pricing</div>
+      <h1>シンプルな料金体系</h1>
+      <p>アカウント数に応じた明瞭な料金設定。<br />まずは無料でお試しください。</p>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="plan-name">ベーシックプラン</div>
+          <div class="plan-price">
+            <span class="plan-price-num">550</span>
+            <span class="plan-price-unit">円 / アカウント</span>
+          </div>
+          <div class="plan-price-tax">税抜価格（別途消費税がかかります）</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>管理栄養士によるチャット相談（3日以内返答）</li>
+            <li>食事記録・栄養分析</li>
+            <li>PFCバランス・カロリー管理</li>
+            <li>コンディション記録</li>
+            <li>グラフ・レポート表示</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">無料で始める</a>
+          <p class="plan-note">※ 複数アカウントのご契約はお問い合わせください。</p>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="plan-name">チームプラン</div>
+          <div class="plan-price">
+            <span class="plan-price-num" style="font-size: 36px; line-height: 1.2;">お問い合わせ</span>
+          </div>
+          <div class="plan-price-tax">チーム・クラブ向けカスタム料金</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>ベーシックプランの全機能</li>
+            <li>複数アカウントの一括管理</li>
+            <li>チーム全体のデータ一覧</li>
+            <li>専任サポート担当</li>
+            <li>カスタムレポート</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">お問い合わせ</a>
+          <p class="plan-note">※ 10アカウント以上からご利用いただけます。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">料金はいつから発生しますか？</div>
+          <p class="faq-a">無料トライアル期間終了後から課金が始まります。詳細はお問い合わせください。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">税込みの金額はいくらですか？</div>
+          <p class="faq-a">1アカウントあたり550円（税抜）に消費税10%が加算され、605円（税込）となります。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">途中でプランを変更できますか？</div>
+          <p class="faq-a">はい、いつでも変更可能です。チームプランへの移行はお問い合わせよりご連絡ください。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">解約はいつでもできますか？</div>
+          <p class="faq-a">はい、いつでも解約できます。解約後は次回更新日までサービスをご利用いただけます。</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">チャット相談の返答は何日以内ですか？</div>
+          <p class="faq-a">管理栄養士が3日以内にお答えします。土日祝日を含む場合は、多少お時間をいただく場合があります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <p class="cta-sub">まずは無料でお試しください。<br />管理栄養士があなたの目標に合わせてサポートします。</p>
+      <div class="cta-buttons">
+        <a href="index.html#contact" class="btn btn-white">無料で始める →</a>
+        <a href="index.html#contact" class="btn btn-ghost">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <img src="Actimo_logo.png" alt="Actimo" class="footer-logo" />
+        <ul class="footer-links">
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 合同会社About The Engineer</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

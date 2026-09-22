@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>利用規約 | Actimo</title>
+  <meta name="description" content="Actimoの利用規約です。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1B4FE8;
+      --blue-dark:   #1040CC;
+      --teal:        #10D5AB;
+      --dark:        #07101F;
+      --navy:        #0C1E3D;
+      --text:        #1A2B4A;
+      --muted:       #5C7099;
+      --bg:          #F4F7FF;
+      --white:       #FFFFFF;
+      --border:      #DCE4F5;
+      --radius:      12px;
+      --font:        'Noto Sans JP', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { height: 28px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 700; font-size: 15px;
+      padding: 12px 28px; border-radius: 999px; border: none; cursor: pointer;
+      transition: all .2s; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-sm { font-size: 13px; padding: 10px 22px; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 72px 0 56px;
+      background: linear-gradient(135deg, #F4F7FF 0%, #E6ECFC 100%);
+      text-align: center;
+    }
+    .page-header-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      background: rgba(27,79,232,.10); padding: 6px 14px;
+      border-radius: 999px; margin-bottom: 20px; letter-spacing: .04em;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      color: var(--dark); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .page-header p { font-size: 14px; color: var(--muted); }
+
+    /* ── Terms body ── */
+    .terms-body { padding: 80px 0 100px; }
+    .terms-inner { max-width: 720px; }
+    .terms-date { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
+    .terms-section { margin-bottom: 48px; }
+    .terms-section h2 {
+      font-size: 18px; font-weight: 700; color: var(--dark);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .terms-section p { font-size: 14px; color: var(--muted); line-height: 2; margin-bottom: 12px; }
+    .terms-section ol, .terms-section ul {
+      padding-left: 20px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .terms-section li { font-size: 14px; color: var(--muted); line-height: 1.85; }
+
+    /* ── Footer ── */
+    footer { background: var(--dark); padding: 40px 0; }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { height: 22px; width: auto; filter: brightness(0) invert(1); opacity: .6; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.35); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html"><img src="Actimo_logo.png" alt="Actimo" class="nav-logo" /></a>
+        <ul class="nav-links">
+          <li><a href="index.html#features">特徴</a></li>
+          <li><a href="index.html#how">使い方</a></li>
+          <li><a href="pricing.html">料金</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn-primary btn-sm">無料で始める</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-kicker">Terms of Service</div>
+      <h1>利用規約</h1>
+      <p>Actimoをご利用いただく前に、必ずお読みください。</p>
+    </div>
+  </div>
+
+  <!-- Terms -->
+  <section class="terms-body">
+    <div class="container">
+      <div class="terms-inner">
+        <p class="terms-date">制定日：2026年9月22日</p>
+
+        <div class="terms-section">
+          <h2>第1条（適用）</h2>
+          <p>本利用規約（以下「本規約」）は、合同会社About The Engineer（以下「当社」）が提供するパフォーマンス管理システム「Actimo」（以下「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さまには、本規約に従って本サービスをご利用いただきます。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第2条（利用登録）</h2>
+          <p>本サービスへの登録を希望する方は、本規約に同意のうえ、当社の定める方法によって利用登録を申請してください。当社が登録を承認した時点で、利用登録が完了します。</p>
+          <p>当社は、以下の場合に登録申請を承認しないことがあります。</p>
+          <ol>
+            <li>虚偽の内容で申請した場合</li>
+            <li>過去に本規約に違反したことがある場合</li>
+            <li>その他、当社が不適当と判断した場合</li>
+          </ol>
+        </div>
+
+        <div class="terms-section">
+          <h2>第3条（料金および支払い）</h2>
+          <p>本サービスの利用料金は、1アカウントあたり550円（税抜）です。別途消費税が加算されます。</p>
+          <p>料金は当社が定める方法によりお支払いください。支払いが確認されない場合、サービスの提供を停止する場合があります。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第4条（禁止事項）</h2>
+          <p>ユーザーは、本サービスの利用にあたり、以下の行為を行ってはなりません。</p>
+          <ol>
+            <li>法令または公序良俗に違反する行為</li>
+            <li>当社または第三者の知的財産権を侵害する行為</li>
+            <li>本サービスを商業目的で無断転用する行為</li>
+            <li>本サービスの運営を妨害する行為</li>
+            <li>他のユーザーに不利益・損害を与える行為</li>
+            <li>その他、当社が不適当と判断する行為</li>
+          </ol>
+        </div>
+
+        <div class="terms-section">
+          <h2>第5条（サービスの停止・変更）</h2>
+          <p>当社は、以下の場合に本サービスの提供を停止・変更できるものとします。</p>
+          <ol>
+            <li>システムのメンテナンスを行う場合</li>
+            <li>天災・事変その他の不可抗力により提供が困難な場合</li>
+            <li>その他、当社が必要と判断した場合</li>
+          </ol>
+          <p>当社は、本サービスの停止・変更によってユーザーに生じた損害について一切の責任を負いません。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第6条（免責事項）</h2>
+          <p>本サービスで提供する栄養・健康に関する情報はあくまで参考情報です。医師・医療機関の指示に従うことを優先してください。本サービスの情報に基づいた行動によって生じた損害について、当社は責任を負いません。</p>
+          <p>当社は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じたトラブルについて一切責任を負いません。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第7条（個人情報の取り扱い）</h2>
+          <p>当社は、本サービスの利用によって取得する個人情報を、別途定めるプライバシーポリシーに従い適切に取り扱います。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第8条（利用規約の変更）</h2>
+          <p>当社は、必要と判断した場合には、ユーザーへの事前通知なく本規約を変更することができます。変更後の規約は、本サービス上に掲示した時点から効力を生じます。</p>
+        </div>
+
+        <div class="terms-section">
+          <h2>第9条（準拠法・裁判管轄）</h2>
+          <p>本規約の解釈には日本法を準拠法とします。本サービスに関して生じた紛争については、当社の所在地を管轄する裁判所を専属的合意管轄とします。</p>
+        </div>
+
+        <p style="font-size: 13px; color: var(--muted); margin-top: 48px;">以上</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <img src="Actimo_logo.png" alt="Actimo" class="footer-logo" />
+        <ul class="footer-links">
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 合同会社About The Engineer</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
