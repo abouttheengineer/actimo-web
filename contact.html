@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お問い合わせ | Actimo</title>
+  <meta name="description" content="Actimoへのお問い合わせはこちらから。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1B4FE8;
+      --blue-dark:   #1040CC;
+      --teal:        #10D5AB;
+      --dark:        #07101F;
+      --navy:        #0C1E3D;
+      --text:        #1A2B4A;
+      --muted:       #5C7099;
+      --bg:          #F4F7FF;
+      --white:       #FFFFFF;
+      --border:      #DCE4F5;
+      --radius:      12px;
+      --font:        'Noto Sans JP', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { height: 28px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 700; font-size: 15px;
+      padding: 12px 28px; border-radius: 999px; border: none; cursor: pointer;
+      transition: all .2s; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-sm { font-size: 13px; padding: 10px 22px; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 72px 0 56px;
+      background: linear-gradient(135deg, #F4F7FF 0%, #E6ECFC 100%);
+      text-align: center;
+    }
+    .page-header-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      background: rgba(27,79,232,.10); padding: 6px 14px;
+      border-radius: 999px; margin-bottom: 20px; letter-spacing: .04em;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      color: var(--dark); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .page-header p { font-size: 16px; color: var(--muted); line-height: 1.8; }
+
+    /* ── Contact body ── */
+    .contact-body { padding: 72px 0 100px; }
+    .contact-grid {
+      display: grid; grid-template-columns: 0.5fr 1fr; gap: 64px; align-items: start;
+    }
+
+    /* ── Info column ── */
+    .info-list { display: flex; flex-direction: column; gap: 32px; }
+    .info-item-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+    }
+    .info-item-value { font-size: 15px; color: var(--dark); line-height: 1.7; }
+
+    /* ── Form ── */
+    .form-group { display: flex; flex-direction: column; gap: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .field-label {
+      display: block; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--muted); margin-bottom: 7px;
+    }
+    .field {
+      width: 100%; font-family: var(--font); font-size: 15px;
+      color: var(--dark); background: var(--white);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 14px; outline: none; transition: border-color .2s;
+      appearance: none;
+    }
+    .field:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,232,.10); }
+    textarea.field { min-height: 140px; resize: vertical; }
+    .submit-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 700; font-size: 16px;
+      padding: 14px 36px; border-radius: 999px; border: none; cursor: pointer;
+      background: var(--blue); color: var(--white);
+      transition: all .2s; align-self: flex-start;
+    }
+    .submit-btn:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(27,79,232,.30); }
+    .submit-btn:disabled { opacity: .6; cursor: default; transform: none; box-shadow: none; }
+    .error-msg { font-size: 14px; color: #C0392B; line-height: 1.7; }
+    .error-msg a { color: inherit; text-decoration: underline; }
+
+    /* ── Thank you ── */
+    .thankyou {
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 64px 48px; text-align: center;
+    }
+    .thankyou-title { font-size: 48px; font-weight: 900; color: var(--dark); margin-bottom: 16px; letter-spacing: -.02em; }
+    .thankyou-body { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 32px; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-weight: 700; font-size: 14px;
+      padding: 12px 28px; border-radius: 999px;
+      border: 2px solid var(--blue); color: var(--blue); background: transparent;
+      cursor: pointer; transition: all .2s;
+    }
+    .back-btn:hover { background: var(--blue); color: var(--white); }
+
+    /* ── Footer ── */
+    footer { background: var(--dark); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { height: 22px; width: auto; filter: brightness(0) invert(1); opacity: .6; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.35); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html"><img src="Actimo_logo.png" alt="Actimo" class="nav-logo" /></a>
+        <ul class="nav-links">
+          <li><a href="index.html#features">特徴</a></li>
+          <li><a href="index.html#how">使い方</a></li>
+          <li><a href="pricing.html">料金</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary btn-sm">無料で始める</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-kicker">Contact</div>
+      <h1>お問い合わせ</h1>
+      <p>サービスへのご質問・お申し込みはこちらから。<br />3営業日以内にご連絡いたします。</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section class="contact-body">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info -->
+        <div class="info-list">
+          <div>
+            <div class="info-item-label">Email</div>
+            <div class="info-item-value">hello@abouttheengineer.jp</div>
+          </div>
+          <div>
+            <div class="info-item-label">対応時間</div>
+            <div class="info-item-value">10:00 – 19:00 JST<br />（水曜定休）</div>
+          </div>
+          <div>
+            <div class="info-item-label">返答目安</div>
+            <div class="info-item-value">3営業日以内</div>
+          </div>
+          <div>
+            <div class="info-item-label">運営</div>
+            <div class="info-item-value">合同会社About The Engineer</div>
+          </div>
+        </div>
+
+        <!-- Form / Thank you -->
+        <div id="form-area">
+          <form id="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="form-row">
+              <div>
+                <label class="field-label">お名前 <span style="color: var(--blue);">*</span></label>
+                <input class="field" type="text" name="name" required placeholder="山田 太郎" />
+              </div>
+              <div>
+                <label class="field-label">メールアドレス <span style="color: var(--blue);">*</span></label>
+                <input class="field" type="email" name="email" required placeholder="you@example.com" />
+              </div>
+            </div>
+            <div>
+              <label class="field-label">お問い合わせ種別</label>
+              <select class="field" name="topic">
+                <option>サービスについて</option>
+                <option>料金・プランについて</option>
+                <option>チームプランのご相談</option>
+                <option>その他</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label">メッセージ <span style="color: var(--blue);">*</span></label>
+              <textarea class="field" name="message" required placeholder="ご質問やご要望をお書きください。"></textarea>
+            </div>
+            <div id="error-msg" style="display: none;" class="error-msg">
+              送信に失敗しました。時間をおいて再度お試しいただくか、<a href="mailto:hello@abouttheengineer.jp">hello@abouttheengineer.jp</a> まで直接ご連絡ください。
+            </div>
+            <button type="submit" class="submit-btn" id="submit-btn">送信する →</button>
+          </form>
+
+          <div id="thankyou" style="display: none;" class="thankyou">
+            <div class="thankyou-title">Thank You</div>
+            <p class="thankyou-body">お問い合わせありがとうございます。<br />3営業日以内にご連絡いたします。</p>
+            <button class="back-btn" onclick="resetForm()">フォームに戻る</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <img src="Actimo_logo.png" alt="Actimo" class="footer-logo" />
+        <ul class="footer-links">
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 合同会社About The Engineer</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const FORMSPREE_ID = 'xdaqvjpd';
+
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const errMsg = document.getElementById('error-msg');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      errMsg.style.display = 'none';
+
+      const data = {};
+      new FormData(this).forEach((v, k) => data[k] = v);
+
+      try {
+        const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          document.getElementById('contact-form').style.display = 'none';
+          document.getElementById('thankyou').style.display = 'block';
+        } else {
+          errMsg.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = '送信する →';
+        }
+      } catch {
+        errMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '送信する →';
+      }
+    });
+
+    function resetForm() {
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-form').style.display = 'flex';
+      document.getElementById('thankyou').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
